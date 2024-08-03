@@ -1,3 +1,7 @@
+<% if (typeof message !== 'undefined') { %>
+<p style="color: red"><%= message %></p>
+<% } %>
+
 <style>
   * {
     margin: 0;
@@ -25,7 +29,7 @@
   form input[type="file"] {
     display: block;
     padding: 14px;
-    background: linear-gradient(45deg, #20de9e, transparent);
+    background: linear-gradient(45deg, black, transparent);
     color: white;
   }
 
@@ -94,49 +98,21 @@
   }
 </style>
 <div class="container">
-  <h1>Registration Form</h1>
+  <h1>Login Form</h1>
   <div class="content">
-    <form action="" method="POST" enctype="multipart/form-data">
-      <div>
-        <label for="name">Enter Your Name</label>
-        <input
-          type="text"
-          name="name"
-          ,
-          placeholder="Enter your Name"
-          required
-        />
-      </div>
+    <form action="" method="POST">
       <div>
         <label for="email">Enter your Email</label>
-        <input
-          type="email"
-          name="email"
-          ,
-          placeholder="Enter your Email"
-          required
-        />
-      </div>
-      <div>
-        <input type="file" name="image" required />
+        <input type="email" name="email" placeholder="Enter your Email" required />
       </div>
       <div>
         <label for="password">Enter your Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your Password"
-          required
-        />
+        <input type="password" name="password" placeholder="Enter your Password" required />
       </div>
-      <input type="submit" value="Register" />
+      <input type="submit" value="Login" />
     </form>
     <div class="footer">
-      <p>Already have an account? <a href="/">login</a></p>
+      <p>Don't have an account? <a href="/register">register</a></p>
     </div>
   </div>
 </div>
-
-<% if (typeof message !== 'undefined') { %>
-<p style="color: green"><%= message %></p>
-<% } %>

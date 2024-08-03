@@ -2,10 +2,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 const PORT = 5000;
 const mongoose = require("mongoose");
-const DATABASECONNECTIONSTRING =
-  "mongodb+srv://Omama:iamdeveloper@cluster0.awkgme8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const { CONNECTION_STRING } = process.env;
 mongoose
-  .connect(DATABASECONNECTIONSTRING)
+  .connect(CONNECTION_STRING)
   .then((res) => {
     console.log("Database connect");
   })
@@ -17,7 +16,7 @@ const http = require("http").Server(app);
 
 // import routes
 const userRoute = require("./routes/userRoute");
-app.use('/', userRoute);
+app.use("/", userRoute);
 
 http.listen(PORT, function () {
   console.log(`Server is started visit: http://localhost:${PORT}`);
