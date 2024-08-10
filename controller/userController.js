@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
     console.log("Login attempt with email:", email);
     const userData = await User.findOne({ email: email });
-    console.log('userData:', userData );
+    console.log("userData:", userData);
     if (userData) {
       const passwordMatch = await bcrypt.compare(password, userData.password);
       if (passwordMatch) {
@@ -80,7 +80,8 @@ exports.logout = async (req, res) => {
 
 exports.loadDashboard = async (req, res) => {
   try {
-    res.render("dashboard", { user: req.session.user });
+    var users = await User.find({ _id: { $nin: [req.session.user._id] } });
+    res.render("dashboard", { user: req.session.user, users: users });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
